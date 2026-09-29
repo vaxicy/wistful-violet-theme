@@ -3,9 +3,12 @@
 ## What the assets are
 
 - `screenshots/en/screenshot-1-browser.png` (1280x800) - the browser mockup, one tab
+- `screenshots/en/screenshot-2-introduction.png` (1280x800) - theme introduction with the palette sheet
 - `promo/440x280.png` and `promo/1400x560.png`
 
-All three are rendered by `scripts/generate-store-assets.py` with headless Chromium from one HTML/CSS source. They are illustrative layouts built from the real `manifest.json` colours, not native screenshots of a running Chrome window. `references/` keeps the intermediate HTML and PNG of the same run.
+All four are rendered by `scripts/generate-store-assets.py` with headless Chromium from one HTML/CSS source. They are illustrative layouts built from the real `manifest.json` colours, not native screenshots of a running Chrome window. `references/` keeps the intermediate HTML and PNG of the same run.
+
+The palette sheet sits on `tab_text`, a theme tone that none of the four swatches uses, so no card can blend into the page behind it. Card text picks whichever of the theme's two text tones has the higher contrast, and the script asserts it stays at or above 4.5:1.
 
 ## Colors
 

@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+:root{
+  --frame:#24132E;--toolbar:#4A3C4F;--ob:#3C3543;
+  --obt:#E9E5EB;--tt:#F8F6F9;--tbt:#AFA1B8;
+  --tbi:#E1DBE5;--bm:#AFA1B8;
+  --ntp:#E9E5EB;--nt:#3C3543;--accent:#B575CC;
+  --accent-deep:#813C9A;--edge:#4A3C4F;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff}
+
+/* ---- browser mockup, one tab, layer by layer like real Chrome ---- */
+.browser{width:1280px;height:800px;background:var(--ntp);position:relative;overflow:hidden}
+.tabs{height:40px;background:var(--frame);display:flex;align-items:flex-end;padding:0 10px;
+      gap:8px;position:relative;color:var(--tbt)}
+.tab{height:34px;padding:0 14px;font-size:13px;border-radius:12px 12px 0 0;
+     display:flex;align-items:center;gap:9px;white-space:nowrap}
+.tab.active{background:var(--toolbar);color:var(--tt);width:250px}
+.fav{width:14px;height:14px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+.tab .x{margin-left:auto;opacity:.85;line-height:0}
+.newtab{padding:0 6px 9px;line-height:0}
+.caption{position:absolute;right:0;top:0;height:40px;width:104px;background:#423448;
+         display:flex;align-items:center;justify-content:space-around}
+.tools{height:48px;background:var(--toolbar);display:flex;align-items:center;gap:14px;
+       padding:0 14px;color:var(--tbi)}
+.tools .ico{line-height:0;display:flex;align-items:center}
+.omni{flex:1;height:34px;border-radius:20px;background:var(--ob);color:var(--obt);
+      display:flex;align-items:center;gap:12px;padding:0 16px;font-size:13px}
+.omni .ph{color:#9B969F}
+.omni .tail{margin-left:auto;display:flex;gap:12px;align-items:center}
+.bookmarks{height:30px;background:var(--toolbar);color:var(--bm);font-size:12px;
+           display:flex;gap:26px;padding:7px 22px;white-space:nowrap;overflow:hidden}
+
+/* ---- new tab page ---- */
+.ntp{position:relative;height:682px;background:var(--ntp);text-align:center;color:var(--nt)}
+.images{position:absolute;right:26px;top:16px;font-size:13px;color:#444746;
+        display:flex;align-items:center;gap:8px}
+.google{font-size:76px;line-height:1;letter-spacing:-3px;font-weight:500;padding-top:78px;
+        color:#A696AE}
+.search{width:640px;height:50px;border-radius:26px;background:#FFFFFF;
+        border:1px solid #E4E1E7;box-shadow:0 1px 5px rgba(0,0,0,.10);
+        margin:34px auto 0;display:flex;align-items:center;gap:14px;padding:0 18px;
+        color:#66676C;font-size:15px}
+.search .tail{margin-left:auto;display:flex;gap:14px;align-items:center}
+.shortcuts{display:flex;justify-content:center;gap:44px;margin-top:34px}
+.shortcut{width:104px;font-size:12px;color:#5F6368}
+.shortcut .circle{width:48px;height:48px;border-radius:50%;background:#BDB1C3;
+                  margin:0 auto 10px;display:flex;align-items:center;justify-content:center;
+                  line-height:0}
+.customize{position:absolute;right:24px;bottom:16px;background:#202124;
+           color:#E8EAED;font-size:12px;border-radius:16px;padding:8px 14px;
+           display:flex;align-items:center;gap:7px}
+
+/* ---- promo tiles ---- */
+.small{width:440px;height:280px;background:var(--frame);text-align:center;padding-top:20px;
+       position:relative;overflow:hidden}
+.small .tile{width:92px;height:92px;margin:0 auto;background:#fff;border-radius:22px;
+             display:flex;align-items:center;justify-content:center}
+.small .tile img{width:78px;height:78px;display:block;border-radius:16px}
+.small h1{font:40px Georgia,serif;font-weight:normal;margin:12px 0 0;color:var(--tt)}
+.small .sub{font-size:13px;letter-spacing:5px;margin-top:8px;color:var(--accent)}
+.small p{font-size:12px;margin:12px 0 0;color:var(--tbt)}
+.small .bar{position:absolute;left:0;right:0;bottom:0;height:14px;background:var(--accent)}
+
+.poster{width:1400px;height:560px;background:var(--toolbar);position:relative;overflow:hidden;
+        text-align:center;border-top:8px solid var(--accent)}
+.poster h1{font:48px Georgia,serif;font-weight:normal;margin:22px 0 0;color:var(--tt)}
+.poster p{font-size:17px;margin:8px 0 0;color:var(--accent)}
+.poster .preview{position:absolute;left:286px;top:150px;transform:scale(.65);
+                 transform-origin:top left;border:2px solid var(--accent);border-radius:16px;
+                 overflow:hidden;text-align:left}
+
+/* ---- theme introduction + palette sheet ----
+   The sheet sits on a theme tone that no swatch uses, so no card can blend
+   into the page behind it. */
+.intro{width:1280px;height:800px;padding:65px 72px;background:#F8F6F9;color:var(--ink)}
+.kicker{font-size:13px;letter-spacing:3px;color:var(--edge)}
+.intro h1{font:54px Georgia,serif;font-weight:normal;margin:20px 0;color:var(--ink)}
+.intro p{font-size:21px;margin:0;color:var(--ink)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:35px}
+.card{height:210px;border-radius:18px;padding:30px;border:1px solid var(--frame);
+      display:flex;flex-direction:column;justify-content:end}
+.card strong{font-size:28px}
+.card span{font-size:17px;margin-top:12px}
+.intro p.chips{font-size:16px;margin:44px 0 0;color:var(--edge)}
+</style></head><body><div class="intro"><div class="kicker">A DISTANT SUMMER EVENING, IN VIOLET</div><h1>Wistful Violet Theme</h1><p>Deep violet layers, a soft lavender canvas, one quiet accent.</p><div class="cards"><div class="card" style="background:#24132E;color:#F8F6F9"><strong>Deep Violet</strong><span>#24132E &#183; Window frame, tab strip</span></div><div class="card" style="background:#4A3C4F;color:#F8F6F9"><strong>Twilight Violet</strong><span>#4A3C4F &#183; Toolbar, bookmark bar, active tab</span></div><div class="card" style="background:#AFA1B8;color:#24132E"><strong>Haze Mauve</strong><span>#AFA1B8 &#183; Bookmark labels, inactive tab text</span></div><div class="card" style="background:#E9E5EB;color:#24132E"><strong>Lavender Canvas</strong><span>#E9E5EB &#183; New tab background</span></div></div><p class="chips">Solid colors &#183; Flat surfaces &#183; Tuned contrast</p></div></body></html>

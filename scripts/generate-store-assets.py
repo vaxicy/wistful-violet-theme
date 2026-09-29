@@ -67,6 +67,39 @@ def mix_key(key, key2, t):
 
 # Chrome dims the omnibox placeholder from the omnibox text tone.
 OMNI_PLACEHOLDER = mix_key("omnibox_text", "omnibox_background", 0.45)
+
+
+# --- palette sheet -----------------------------------------------------------
+def _lum(hex_color):
+    def ch(v):
+        v /= 255
+        return v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4
+    r, g, b = (int(hex_color[i:i + 2], 16) for i in (1, 3, 5))
+    return 0.2126 * ch(r) + 0.7152 * ch(g) + 0.0722 * ch(b)
+
+
+def contrast(a, b):
+    la, lb = sorted((_lum(a), _lum(b)))
+    return (lb + 0.05) / (la + 0.05)
+
+
+def text_on(bg_hex):
+    """Whichever of the theme's own two text tones reads better on this colour."""
+    light, dark = color("tab_text"), color("frame")
+    best = light if contrast(light, bg_hex) >= contrast(dark, bg_hex) else dark
+    assert contrast(best, bg_hex) >= 4.5, f"{bg_hex}: only {contrast(best, bg_hex):.1f}:1"
+    return best
+
+
+# Palette cards: four manifest tokens that carry the design. The sheet behind
+# them is a fifth theme tone, so no card can blend into the page.
+PALETTE = [
+    ("Deep Violet", "frame", "Window frame, tab strip"),
+    ("Twilight Violet", "toolbar", "Toolbar, bookmark bar, active tab"),
+    ("Haze Mauve", "tab_background_text", "Bookmark labels, inactive tab text"),
+    ("Lavender Canvas", "ntp_background", "New tab background"),
+]
+INTRO_BG = color("tab_text")
 NTP_LINK = "#444746"         # "Images" link, top right of the new tab page
 SHORTCUT_BG = "#BDB1C3"      # round new-tab shortcut circles
 SHORTCUT_TEXT = "#5F6368"
@@ -146,6 +179,20 @@ body{{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff}}
 .poster .preview{{position:absolute;left:286px;top:150px;transform:scale(.65);
                  transform-origin:top left;border:2px solid var(--accent);border-radius:16px;
                  overflow:hidden;text-align:left}}
+
+/* ---- theme introduction + palette sheet ----
+   The sheet sits on a theme tone that no swatch uses, so no card can blend
+   into the page behind it. */
+.intro{{width:1280px;height:800px;padding:65px 72px;background:{INTRO_BG};color:var(--ink)}}
+.kicker{{font-size:13px;letter-spacing:3px;color:var(--edge)}}
+.intro h1{{font:54px Georgia,serif;font-weight:normal;margin:20px 0;color:var(--ink)}}
+.intro p{{font-size:21px;margin:0;color:var(--ink)}}
+.cards{{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:35px}}
+.card{{height:210px;border-radius:18px;padding:30px;border:1px solid var(--frame);
+      display:flex;flex-direction:column;justify-content:end}}
+.card strong{{font-size:28px}}
+.card span{{font-size:17px;margin-top:12px}}
+.intro p.chips{{font-size:16px;margin:44px 0 0;color:var(--edge)}}
 """
 
 
@@ -293,6 +340,18 @@ WIDE = (
     '<p>Nostalgic violet tones for distant summer evenings.</p>'
     f'<div class="preview">{browser()}</div></div>')
 
+cards = "".join(
+    f'<div class="card" style="background:{color(key)};color:{text_on(color(key))}">'
+    f'<strong>{name}</strong><span>{color(key)} &#183; {role}</span></div>'
+    for name, key, role in PALETTE)
+
+INTRO = (
+    '<div class="intro"><div class="kicker">A DISTANT SUMMER EVENING, IN VIOLET</div>'
+    '<h1>Wistful Violet Theme</h1>'
+    '<p>Deep violet layers, a soft lavender canvas, one quiet accent.</p>'
+    f'<div class="cards">{cards}</div>'
+    '<p class="chips">Solid colors &#183; Flat surfaces &#183; Tuned contrast</p></div>')
+
 
 def page(body):
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
@@ -301,17 +360,24 @@ def page(body):
 
 JOBS = [
     ("screenshot-1-browser", 1280, 800, browser(), "store-assets/screenshots/en"),
+    ("screenshot-2-introduction", 1280, 800, INTRO, "store-assets/screenshots/en"),
     ("promo-440x280", 440, 280, SMALL, "store-assets/promo"),
     ("promo-1400x560", 1400, 560, WIDE, "store-assets/promo"),
 ]
 TARGETS = {
     "screenshot-1-browser": "screenshot-1-browser.png",
+    "screenshot-2-introduction": "screenshot-2-introduction.png",
     "promo-440x280": "440x280.png",
     "promo-1400x560": "1400x560.png",
 }
 
 
 def main():
+    # The palette sheet background must not be one of the swatches, or that card
+    # blends into the page behind it.
+    swatches = {color(key) for _name, key, _role in PALETTE}
+    assert INTRO_BG not in swatches, f"palette sheet bg {INTRO_BG} collides with a swatch"
+
     with sync_playwright() as p:
         engine = p.chromium.launch(headless=True)
         tab = engine.new_page(device_scale_factor=1)

@@ -66,13 +66,15 @@ Search for **Wistful Violet Theme** in the Chrome Web Store and install it.
 
 ![Wistful Violet Theme browser preview](https://raw.githubusercontent.com/vaxicy/wistful-violet-theme/main/store-assets/screenshots/en/screenshot-1-browser.png)
 
+![Wistful Violet Theme color palette](https://raw.githubusercontent.com/vaxicy/wistful-violet-theme/main/store-assets/screenshots/en/screenshot-2-introduction.png)
+
 ## Files
 
 | File | Description |
 |------|-------------|
 | `manifest.json` | Chrome theme manifest (MV3) with inline `theme` config |
 | `logo/logo.png` | Theme icon (128x128) |
-| `store-assets/screenshots/en/` | Store listing screenshot (1280x800) |
+| `store-assets/screenshots/en/` | Store listing screenshots (1280x800) |
 | `store-assets/promo/` | Promo tiles (440x280 and 1400x560) |
 | `store-assets/store-description.txt` | Store listing description (English) |
 | `store-assets/ASSET-NOTES.md` | How the store artwork is composed and calibrated |
