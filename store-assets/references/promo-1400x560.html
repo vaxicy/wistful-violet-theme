@@ -1,0 +1,72 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+:root{
+  --frame:#24132E;--toolbar:#4A3C4F;--ob:#3C3543;
+  --obt:#E9E5EB;--tt:#F8F6F9;--tbt:#AFA1B8;
+  --tbi:#E1DBE5;--bm:#AFA1B8;
+  --ntp:#E9E5EB;--nt:#3C3543;--accent:#B575CC;
+  --accent-deep:#813C9A;--edge:#4A3C4F;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff}
+
+/* ---- browser mockup, one tab, layer by layer like real Chrome ---- */
+.browser{width:1280px;height:800px;background:var(--ntp);position:relative;overflow:hidden}
+.tabs{height:40px;background:var(--frame);display:flex;align-items:flex-end;padding:0 10px;
+      gap:8px;position:relative;color:var(--tbt)}
+.tab{height:34px;padding:0 14px;font-size:13px;border-radius:12px 12px 0 0;
+     display:flex;align-items:center;gap:9px;white-space:nowrap}
+.tab.active{background:var(--toolbar);color:var(--tt);width:250px}
+.fav{width:14px;height:14px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+.tab .x{margin-left:auto;opacity:.85;line-height:0}
+.newtab{padding:0 6px 9px;line-height:0}
+.caption{position:absolute;right:0;top:0;height:40px;width:104px;background:#423448;
+         display:flex;align-items:center;justify-content:space-around}
+.tools{height:48px;background:var(--toolbar);display:flex;align-items:center;gap:14px;
+       padding:0 14px;color:var(--tbi)}
+.tools .ico{line-height:0;display:flex;align-items:center}
+.omni{flex:1;height:34px;border-radius:20px;background:var(--ob);color:var(--obt);
+      display:flex;align-items:center;gap:12px;padding:0 16px;font-size:13px}
+.omni .ph{color:#9B969F}
+.omni .tail{margin-left:auto;display:flex;gap:12px;align-items:center}
+.bookmarks{height:30px;background:var(--toolbar);color:var(--bm);font-size:12px;
+           display:flex;gap:26px;padding:7px 22px;white-space:nowrap;overflow:hidden}
+
+/* ---- new tab page ---- */
+.ntp{position:relative;height:682px;background:var(--ntp);text-align:center;color:var(--nt)}
+.images{position:absolute;right:26px;top:16px;font-size:13px;color:#444746;
+        display:flex;align-items:center;gap:8px}
+.google{font-size:76px;line-height:1;letter-spacing:-3px;font-weight:500;padding-top:78px;
+        color:#A696AE}
+.search{width:640px;height:50px;border-radius:26px;background:#FFFFFF;
+        border:1px solid #E4E1E7;box-shadow:0 1px 5px rgba(0,0,0,.10);
+        margin:34px auto 0;display:flex;align-items:center;gap:14px;padding:0 18px;
+        color:#66676C;font-size:15px}
+.search .tail{margin-left:auto;display:flex;gap:14px;align-items:center}
+.shortcuts{display:flex;justify-content:center;gap:44px;margin-top:34px}
+.shortcut{width:104px;font-size:12px;color:#5F6368}
+.shortcut .circle{width:48px;height:48px;border-radius:50%;background:#BDB1C3;
+                  margin:0 auto 10px;display:flex;align-items:center;justify-content:center;
+                  line-height:0}
+.customize{position:absolute;right:24px;bottom:16px;background:#202124;
+           color:#E8EAED;font-size:12px;border-radius:16px;padding:8px 14px;
+           display:flex;align-items:center;gap:7px}
+
+/* ---- promo tiles ---- */
+.small{width:440px;height:280px;background:var(--frame);text-align:center;padding-top:20px;
+       position:relative;overflow:hidden}
+.small .tile{width:92px;height:92px;margin:0 auto;background:#fff;border-radius:22px;
+             display:flex;align-items:center;justify-content:center}
+.small .tile img{width:78px;height:78px;display:block;border-radius:16px}
+.small h1{font:40px Georgia,serif;font-weight:normal;margin:12px 0 0;color:var(--tt)}
+.small .sub{font-size:13px;letter-spacing:5px;margin-top:8px;color:var(--accent)}
+.small p{font-size:12px;margin:12px 0 0;color:var(--tbt)}
+.small .bar{position:absolute;left:0;right:0;bottom:0;height:14px;background:var(--accent)}
+
+.poster{width:1400px;height:560px;background:var(--toolbar);position:relative;overflow:hidden;
+        text-align:center;border-top:8px solid var(--accent)}
+.poster h1{font:48px Georgia,serif;font-weight:normal;margin:22px 0 0;color:var(--tt)}
+.poster p{font-size:17px;margin:8px 0 0;color:var(--accent)}
+.poster .preview{position:absolute;left:286px;top:150px;transform:scale(.65);
+                 transform-origin:top left;border:2px solid var(--accent);border-radius:16px;
+                 overflow:hidden;text-align:left}
+</style></head><body><div class="poster"><h1>Wistful Violet Theme</h1><p>Nostalgic violet tones for distant summer evenings.</p><div class="preview"><div class="browser"><div class="tabs"><div class="tab active"><span class="fav"></span>New Tab<span class="x"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--tt)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div><span class="newtab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--tbt)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span><div class="caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tt)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--tt)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tt)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div></div><div class="tools"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tbi)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tbi)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span><span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--tbi)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg></span><div class="omni"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66676C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg><span class="ph">Search Google or type a URL</span></div><span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--tbi)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l2.4 5.2 5.6.6-4.2 3.8 1.2 5.6L12 16.4 7 19.2l1.2-5.6L4 9.8l5.6-.6z"/></svg></span><span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--tbi)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4h4v3h3v4h-3v3h-4v-3H7V7h3z"/></svg></span><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#B575CC"/><circle cx="12" cy="10" r="3.4" fill="#F8F6F9"/><path d="M5.4 20a7.4 7.4 0 0 1 13.2 0z" fill="#F8F6F9"/></svg></span><span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--tbi)"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></span></div><div class="bookmarks"><span>Bookmarks</span><span>Reading</span><span>Design</span><span>Inspiration</span><span>Snippets</span><span>Dev</span></div><div class="ntp"><div class="images">Images <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#444746" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M4 15l4-4 4 4 3-3 5 5"/></svg></div><div class="google">Google</div><div class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66676C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg><span>Search Google or type a URL</span><span class="tail"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66676C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="4" width="6" height="10" rx="3"/><path d="M6 11a6 6 0 0 0 12 0"/><path d="M12 17v3"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4285F4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg></span></div><div class="shortcuts"><div class="shortcut"><div class="circle"><svg width="26" height="18" viewBox="0 0 26 18"><rect width="26" height="18" rx="5" fill="#FF0033"/><path d="M10.5 5.2l7 3.8-7 3.8z" fill="#fff"/></svg></div>YouTube</div><div class="shortcut"><div class="circle"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3F6EDB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M4 12h16"/><path d="M12 4c2.6 3.2 2.6 12.8 0 16M12 4c-2.6 3.2-2.6 12.8 0 16"/></svg></div>Web Store</div><div class="shortcut"><div class="circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--tbi)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></div>Add shortcut</div></div><div class="customize"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E8EAED" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16z"/></svg>Customize Chrome</div></div></div></div></div></body></html>
